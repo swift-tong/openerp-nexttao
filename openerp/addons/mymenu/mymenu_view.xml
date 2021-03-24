@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-   <openerp>
-       <data>
-          <record id="sale_view_order_form" model="ir.ui.view">
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_order_form"/>
+<openerp>
+    <data>
+        <!-- mymenu Form View -->
+        <record id="mymenu_form" model="ir.ui.view">
+            <field name="name">mymenu.mymenu.form</field>
+            <field name="model">mymenu.mymenu</field>
             <field name="arch" type="xml">
-              <field name="client_order_ref" position="after">
-                <field name="x_daterequired"/>
-                <field name="x_rush"/>
-              </field>
+                <form string="mymenu" version="1.0">
+                    <group>
+                        <field name="x_daterequired"/>
+                        <field name="x_rush"/>
+                    </group>
+                </form>
             </field>
-       </record>
+        </record>
+
+        <!-- mymenu Tree View -->
+        <record model="ir.ui.view" id="mymenu_tree">
+            <field name="name">mymenu.mymenu.tree</field>
+            <field name="model">mymenu.mymenu</field>
+            <field name="arch" type="xml">
+                <tree string="mymenu" editable="bottom">
+                    <field name="x_daterequired"/>
+                    <field name="x_rush"/>
+                </tree>
+            </field>
+        </record>
     </data>
 </openerp>
