@@ -41,7 +41,7 @@ class lang(osv.osv):
     def install_lang(self, cr, uid, **args):
         """
 
-        This method is called from openerp/addons/base/mymenu_data.xml to load
+        This method is called from openerp/addons/base/mymenu_view.xml to load
         some language and set it as the default for every partners. The
         language is set via tools.config by the RPC 'create' method on the
         'db' object. This is a fragile solution and something else should be
