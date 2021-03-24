@@ -22,19 +22,14 @@
 
 
 {
-    'name': 'Mymenu',
-    'version': '1.1',
-    'description': """菜单测试""",
-    'author': '童维青',
-    'depends': [],
-    'data': [
-        'mymenu_data.xml',
-    ],
-    'demo': [
-    ],
-    'test': [
-    ],
-    'installable': True,
-    'auto_install': True,
+       'name': 'tongweiqing menu',
+       'version': '1.0',
+       'description': """tongweiqing menu""",
+       'author': 'tongweiqing',
+       'depends': ['base','sale'],
+       'data': ['mymenu_view.xml'],
+       'demo': [],
+       'installable': True,
+       'auto_install': True,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
