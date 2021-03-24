@@ -3,10 +3,10 @@
     <data>
         <!-- mymenu Form View -->
         <record id="mymenu_mymenu_form" model="ir.ui.view">
-            <field name="name">mymenu.mymenu</field>
+            <field name="name">mymenu.mymenu.form</field>
             <field name="model">mymenu.mymenu</field>
             <field name="arch" type="xml">
-                <form string="mymenu" version="1.0">
+                <form string="mymenu" version="7.0">
                     <field name="x_daterequired"/>
                     <field name="x_rush"/>
                 </form>
@@ -15,7 +15,7 @@
 
         <!-- mymenu Tree View -->
         <record model="ir.ui.view" id="mymenu_mymenu_tree">
-            <field name="name">mymenu.mymenu</field>
+            <field name="name">mymenu.mymenu.tree</field>
             <field name="model">mymenu.mymenu</field>
             <field name="arch" type="xml">
                 <tree string="mymenu" editable="bottom">
