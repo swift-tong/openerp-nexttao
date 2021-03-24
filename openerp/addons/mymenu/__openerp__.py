@@ -24,7 +24,7 @@
 {
        'name': 'tongweiqing menu',
        'version': '1.0',
-       'description': """tongweiqing menu""",
+       'description': "tongweiqing menu",
        'author': 'tongweiqing',
        'depends': ['base','sale'],
        'data': ['mymenu_view.xml'],
