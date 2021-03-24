@@ -12,7 +12,7 @@
 {#            <field name="target">current</field>#}
 {#        </record>#}
         <!-- 子菜单定义 -->
-        <menuitem action="action_todo_task" id="submenu_todo_task" name="待办事项"
-                  parent="menu_todo" sequence="10"/>
+{#        <menuitem action="action_todo_task" id="submenu_todo_task" name="待办事项"#}
+{#                  parent="menu_todo" sequence="10"/>#}
     </data>
 </openerp>

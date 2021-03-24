@@ -26,7 +26,7 @@
        'version': '1.0',
        'description': "tongweiqing menu",
        'author': 'tongweiqing',
-       'depends': ['base','sale'],
+       'depends': ['base'],
        'data': ['mymenu_view.xml','mymenu_menu.xml'],
        'demo': [],
        'installable': True,
