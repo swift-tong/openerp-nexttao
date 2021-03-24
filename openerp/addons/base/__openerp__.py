@@ -34,7 +34,7 @@ The kernel of OpenERP, needed for all installation.
     'website': 'http://www.openerp.com',
     'depends': [],
     'data': [
-        'base_data.xml.xml',
+        'base_data.xml',
         'currency_data.xml',
         'res/res_country_data.xml',
         'security/base_security.xml',
