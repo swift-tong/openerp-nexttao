@@ -7,10 +7,8 @@
             <field name="model">mymenu.mymenu</field>
             <field name="arch" type="xml">
                 <form string="mymenu" version="1.0">
-                    <group>
-                        <field name="x_daterequired"/>
-                        <field name="x_rush"/>
-                    </group>
+                    <field name="x_daterequired"/>
+                    <field name="x_rush"/>
                 </form>
             </field>
         </record>
@@ -21,6 +19,7 @@
             <field name="model">mymenu.mymenu</field>
             <field name="arch" type="xml">
                 <tree string="mymenu" editable="bottom">
+                    <field name="sequence" widget="handle"/>
                     <field name="x_daterequired"/>
                     <field name="x_rush"/>
                 </tree>
