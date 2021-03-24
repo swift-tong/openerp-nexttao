@@ -2,15 +2,15 @@
 <openerp>
     <data>
         <!-- 主菜单定义 -->
-        <menuitem id="menu_todo" name="Todo" parent="menu_management"/>
+        <menuitem id="menu_todo" name="menu test" parent="base.menu_management"/>
         <!-- 菜单动作定义 -->
-        <record id="action_todo_task" model="ir.actions.act_window">
-            <field name="name">待办事项</field>
-            <field name="res_model">todo.task</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="target">current</field>
-        </record>
+{#        <record id="action_todo_task" model="ir.actions.act_window">#}
+{#            <field name="name">待办事项</field>#}
+{#            <field name="res_model">todo.task</field>#}
+{#            <field name="view_type">form</field>#}
+{#            <field name="view_mode">tree,form</field>#}
+{#            <field name="target">current</field>#}
+{#        </record>#}
         <!-- 子菜单定义 -->
         <menuitem action="action_todo_task" id="submenu_todo_task" name="待办事项"
                   parent="menu_todo" sequence="10"/>
