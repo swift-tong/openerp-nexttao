@@ -1,12 +1,3 @@
-{#<?xml version="1.0" encoding="utf-8"?>#}
-{#<openerp>#}
-{#    <data noupdate="1">#}
-{#        <menuitem id="tracy_menu" name="Tracy"/>   //顶部菜单栏#}
-{#        <menuitem id="section_main_menu" parent="tracy_menu" name="Self"/>  //左侧菜单栏#}
-{#        <menuitem id="lesson_menu" parent="section_main_menu" name="Lesson_menu" action="action_lesson"/>  //模块目录#}
-{#    </data>#}
-{#</openerp>#}
-
 <?xml version="1.0" encoding="utf-8"?>
    <openerp>
        <data>
