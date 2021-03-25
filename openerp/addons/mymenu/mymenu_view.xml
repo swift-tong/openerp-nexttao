@@ -34,6 +34,7 @@
             <field name="name">Mymenu</field>
             <field name="res_model">mymenu.mymenu</field>
             <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
         </record>
     </data>
 </openerp>
