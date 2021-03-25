@@ -2,7 +2,8 @@
 <openerp>
     <data>
         <!-- 主菜单定义 -->
-        <menuitem id="menu_todo" name="menu test" parent="base.menu_management"/>
+{#        <menuitem id="menu_todo" name="menu test" parent="base.menu_management"/>#}
+        <menuitem id="menu_todo" name="menu test"/>
         <!-- 菜单动作定义 -->
 {#        <record id="action_todo_task" model="ir.actions.act_window">#}
 {#            <field name="name">待办事项</field>#}
