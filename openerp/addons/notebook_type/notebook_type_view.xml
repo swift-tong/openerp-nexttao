@@ -34,7 +34,6 @@
             <field name="view_id" ref="notebook_type_tree_view"/>
         </record>
         <!--定义菜单-->
-        <menuitem id="notebook_type_menu" name="notebook_type" parent="lesson.section_main_menu"
-                  action="action_notebook_type"/>
+        <menuitem id="notebook_type_menu" name="notebook_type"  action="action_notebook_type"/>
     </data>
 </openerp>

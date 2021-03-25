@@ -1,4 +1,5 @@
 from openerp.osv import fields, osv
+
 class notebook(osv.osv):
     _name = "notebook.notebook"
     _description = "demo"
