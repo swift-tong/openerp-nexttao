@@ -8,4 +8,3 @@ class notebook_type(osv.osv):
         "type":fields.char(u"type",szie=64),
         "code":fields.char(u"code",szie=64),
     }
-notebook_type()
