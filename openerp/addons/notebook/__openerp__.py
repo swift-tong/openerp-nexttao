@@ -22,7 +22,7 @@
 
 
 {
-    "name":"notebook",
+    "name":"notebook童维青",
     "version":"1.0",
     "description":"demo",
     "author":"tongweiqing",
