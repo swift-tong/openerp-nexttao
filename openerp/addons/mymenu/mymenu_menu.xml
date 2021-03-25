@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <openerp>
     <data>
-        <menuitem id="menu_todo" name="menu test"/>
+        <menuitem id="menu_todo" name="menu test" parent="base.menu_management"/>
     </data>
 </openerp>
