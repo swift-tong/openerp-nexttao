@@ -13,4 +13,3 @@ class notebook(osv.osv):
     def search(self, cr, uid, domain, offset=0,limit=None, order=None, context=None, count=False):
         obj = self.pool.get('notebook.notebook')
         ids = obj.search(cr, uid, [('email','=','tongweiqing')])
-        return ids
