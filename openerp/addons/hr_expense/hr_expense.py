@@ -225,7 +225,6 @@ class hr_expense_expense(osv.osv):
             total_currency -= i['amount_currency'] or i['price']
         return total, total_currency, account_move_lines
 
-
     def action_receipt_create(self, cr, uid, ids, context=None):
         '''
         main function that is called when trying to create the accounting entries related to an expense
