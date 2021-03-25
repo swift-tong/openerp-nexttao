@@ -25,7 +25,7 @@
     "name":"notebook",
     "version":"1.0",
     "description":"demo",
-    "author":"童维青",
+    "author":"tongweiqing",
     "depends":['notebook_type'],
     "update_xml": ["notebookß_view.xml"],
     'installable': True,
