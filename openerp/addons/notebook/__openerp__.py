@@ -27,7 +27,7 @@
     "description":"demo",
     "author":"tongweiqing",
     "depends":['notebook_type'],
-    "update_xml": ["notebookß_view.xml"],
+    "update_xml": ["notebook_view.xml"],
     'installable': True,
     'auto_install': False,
 }
