@@ -10,6 +10,7 @@ class notebook(osv.osv):
         "type":fields.many2one('notebook_type.notebook_type',u"type"),
     }
 
-    def search(self, cr, uid, domain, offset=0,limit=None, order=None, context=None, count=False):
+    def msearch(self, cr, uid, domain, offset=0,limit=None, order=None, context=None, count=False):
         obj = self.pool.get('notebook.notebook')
         ids = obj.search(cr, uid, domain)
+        return ids
