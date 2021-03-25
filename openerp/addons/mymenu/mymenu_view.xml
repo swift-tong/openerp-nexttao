@@ -26,5 +26,13 @@
                 </tree>
             </field>
         </record>
+        <menuitem id="menu_todo" name="menu test" parent="base.menu_management"/>
+        <!-- note Stage Action -->
+        <record model="ir.actions.act_window" id="action_mymenu">
+            <field name="name">mymenu</field>
+            <field name="res_model">mymenu.mymenu</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('user_id','=',uid)]</field>
+        </record>
     </data>
 </openerp>
