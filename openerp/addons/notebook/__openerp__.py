@@ -27,7 +27,7 @@
     "description":"demo",
     "author":"童维青",
     "depends":['notebook_type'],
-    "update_xml": ["notebook_type_view.xml"],
+    "update_xml": ["notebookß_view.xml"],
     'installable': True,
     'auto_install': False,
 }
