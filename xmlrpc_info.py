@@ -9,5 +9,17 @@ sock_common = xmlrpclib.ServerProxy(url1)
 user_id = sock_common.login( database, username, password )
 print user_id
 sock = xmlrpclib.ServerProxy(url2)
-ids = sock.execute(database, user_id, password, 'notebook.notebook','msearch',[('email','=','tongweiqing03')], [])
+ids = sock.execute(database, user_id, password, 'notebook.notebook','search',[('title','=','tongweiqing01')], [])
 print ids
+data  = {
+        "title":"rpc tongweiqing",
+        "content":"rpc tongweiqing"
+    }
+ret = sock.execute(database, user_id, password, 'notebook.notebook','write',[2],data)
+print ret
+data2  = {
+        "title":"rpc test",
+        "content":"rpc test"
+    }
+ret = sock.execute(database, user_id, password, 'notebook.notebook','create',data2)
+print ret
