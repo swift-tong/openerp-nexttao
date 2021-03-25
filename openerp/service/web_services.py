@@ -424,6 +424,7 @@ class common(netsvc.ExportService):
         netsvc.ExportService.__init__(self,name)
 
     def dispatch(self, method, params):
+        print method
         if method in ['login', 'about', 'timezone_get', 'get_server_environment',
                       'login_message','get_stats', 'check_connectivity',
                       'list_http_services', 'version', 'authenticate']:
