@@ -25,7 +25,7 @@
     "version":"1.0",
     "description":"demo",
     "author":"tongweiqing",
-    "depends":['lesson',],
+    "depends":[],
     "update_xml": ["notebook_type_view.xml",],
     'installable': True,
     'auto_install': False,
