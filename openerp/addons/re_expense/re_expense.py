@@ -1,5 +1,5 @@
 from openerp.osv import osv, fields
-
+import openerp.addons.decimal_precision as dp
 
 def _employee_get(obj, cr, uid, context=None):
     if context is None:
