@@ -26,7 +26,7 @@
     "version":"1.0",
     "description":"demo",
     "author":"童维青",
-    "depends":['lesson','notebook_type'],
+    "depends":['notebook_type'],
     "update_xml": ["notebook_type_view.xml"],
     'installable': True,
     'auto_install': False,
