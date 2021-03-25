@@ -7,4 +7,5 @@ class notebook_type(osv.osv):
     _columns = {
         "type":fields.char(u"type",szie=64),
         "code":fields.char(u"code",szie=64),
+        "name": fields.char(u"name", szie=64),
     }
