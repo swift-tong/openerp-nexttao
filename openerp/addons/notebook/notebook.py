@@ -7,7 +7,7 @@ class notebook(osv.osv):
         "title":fields.char(u"title",size=64,select=True),
         "content":fields.text(u"content",size=1000),
         "create_date":fields.date(u"create_date",select=True),
-        "type":fields.many2one('notebook_type.notebook_type.name',u"type"),
+        "type":fields.many2one('notebook_type.notebook_type',u"type"),
     }
 
 
