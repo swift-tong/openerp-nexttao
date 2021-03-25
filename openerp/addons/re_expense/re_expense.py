@@ -24,7 +24,7 @@ class re_expense_expense(osv.osv):
         return user.company_id.currency_id.id
 
     _name = 're.expense.expense'
-    _description = "Expense"
+    _description = "费用报销"
     _order = "id desc"
     _columns = {
         'x_daterequired': fields.date('Date Required', required=True),
