@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+        <!--定义表单视图-->
+        <record model="ir.ui.view" id="notebook_type_form_view">
+            <field name="name">notebook_type_form</field>
+            <field name="model">notebook_type.notebook_type</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="notebook_type">
+                    <field name="type"/>
+                    <field name="code"/>
+                </form>
+            </field>
+        </record>
+        <!--定义列表视图-->
+        <record model="ir.ui.view" id="notebook_type_tree_view">
+            <field name="name">notebook_type_tree</field>
+            <field name="model">notebook_type.notebook_type</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="notebook_type">
+                    <field name="type"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+        <!--定义视图动作-->
+        <record model="ir.actions.act_window" id="action_notebook_type">
+            <field name="name">notebook_type</field>
+            <field name="res_model">notebook_type.notebook_type</field>
+            <field name="view_type">form</field>
+            <field name="view_model">form,tree</field>
+            <field name="view_id" ref="notebook_type_tree_view"/>
+        </record>
+        <!--定义菜单-->
+        <menuitem id="notebook_type_menu" name="notebook_type" parent="lesson.section_main_menu"
+                  action="action_notebook_type"/>
+    </data>
+</openerp>

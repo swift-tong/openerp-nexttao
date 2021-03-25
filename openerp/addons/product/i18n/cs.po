@@ -274,7 +274,7 @@ msgstr "Kategorie"
 #: model:product.template,name:product.product_product_25_product_template
 #: model:product.template,name:product.product_template_25
 msgid "Laptop E5023"
-msgstr "Notebook E5023"
+msgstr "notebook E5023"
 
 #. module: product
 #: field:product.price_list,qty1:0
@@ -993,7 +993,7 @@ msgstr "Kód"
 #: model:product.template,name:product.product_product_27_product_template
 #: model:product.template,name:product.product_template_27
 msgid "Laptop Customized"
-msgstr "Notebook na míru"
+msgstr "notebook na míru"
 
 #. module: product
 #: model:ir.model,name:product.model_product_ul
@@ -1819,7 +1819,7 @@ msgstr "Společnost"
 #: model:product.template,name:product.product_product_26_product_template
 #: model:product.template,name:product.product_template_26
 msgid "Laptop S3450"
-msgstr "Notebook S3450"
+msgstr "notebook S3450"
 
 #. module: product
 #: view:product.product:0
