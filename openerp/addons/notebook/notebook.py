@@ -9,3 +9,8 @@ class notebook(osv.osv):
         "create_date":fields.date(u"create_date",select=True),
         "type":fields.many2one('notebook_type.notebook_type',u"type"),
     }
+
+    def search(self, cr, uid, domain, offset=0,
+               limit=None, order=None, context=None, count=False):
+        obj = self.pool.get('openacademy.instructor')
+        ids = obj.search(cr, uid, [])
