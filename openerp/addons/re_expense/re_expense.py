@@ -26,10 +26,6 @@ class re_expense_expense(osv.osv):
     _name = 're.expense.expense'
     _description = "Expense"
     _order = "id desc"
-    _columns = {
-        'x_daterequired': fields.date('Date Required', required=True),
-        'x_rush': fields.boolean('Rush Order'),
-    }
 
     _columns = {
         'name': fields.char('Description', size=128, required=True, readonly=True, states={'draft':[('readonly',False)], 'confirm':[('readonly',False)]}),
