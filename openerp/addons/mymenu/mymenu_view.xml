@@ -27,8 +27,6 @@
             </field>
         </record>
 
-        <menuitem id="menu_todo" name="menu test" parent="base.menu_management" action="mymenu.action_mymenu"/>
-
         <!-- note Stage Action -->
         <record model="ir.actions.act_window" id="action_mymenu">
             <field name="name">Mymenu</field>
@@ -36,5 +34,8 @@
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>
         </record>
+
+        <menuitem id="menu_todo" name="菜单测试" parent="base.menu_management" action="mymenu.action_mymenu"/>
+
     </data>
 </openerp>
