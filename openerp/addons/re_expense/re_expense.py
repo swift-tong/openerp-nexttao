@@ -54,7 +54,8 @@ class re_expense_expense(osv.osv):
             ('done', u'已完成'),
             ('cancelled', u'已取消'),
             ],
-            '状态', readonly=True),
+            '状态', readonly=True, track_visibility='onchange'
+        ),
         'line_ids': fields.one2many('re.expense.line', 'expense_id', 'Expense Lines'),
 
     }
