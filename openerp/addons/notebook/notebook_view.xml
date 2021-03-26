@@ -1,25 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <record model="ir.ui.view" id ="notebook_form_view">
+        <record model="ir.ui.view" id="notebook_form_view">
             <field name="name">notebook_form</field>
             <field name="model">notebook.notebook</field>
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <form string = "notebook">
-                    <field name="title"/>
-                    <field name="content"/>
-                    <field name="create_date"/>
-                    <field name="type"/>
+                <form string="notebook">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="title"/>
+                                <field name="content"/>
+                            </group>
+                            <group>
+                                <field name="create_date"/>
+                                <field name="type"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="test">
+
+                            </page>
+                            <page string="test2">
+                            </page>
+
+                        </notebook>
+                    </sheet>
                 </form>
             </field>
         </record>
-        <record model="ir.ui.view" id ="notebook_tree_view">
+        <record model="ir.ui.view" id="notebook_tree_view">
             <field name="name">notebook_tree</field>
             <field name="model">notebook.notebook</field>
             <field name="type">tree</field>
             <field name="arch" type="xml">
-                <tree string = "notebook">
+                <tree string="notebook">
                     <field name="title"/>
                     <field name="content"/>
                     <field name="create_date"/>
@@ -34,6 +50,6 @@
             <field name="view_model">form,tree</field>
             <field name="view_id" ref="notebook_tree_view"/>
         </record>
-        <menuitem id="notebook_menu" name="记事本"  parent="base.menu_management" action="action_notebook"/>
+        <menuitem id="notebook_menu" name="记事本" parent="base.menu_management" action="action_notebook"/>
     </data>
 </openerp>

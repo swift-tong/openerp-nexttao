@@ -1,15 +1,18 @@
-from openerp.osv import osv, fields
-import openerp.addons.decimal_precision as dp
+import datetime
 
-def _employee_get(obj, cr, uid, context=None):
-    if context is None:
-        context = {}
-    ids = obj.pool.get('hr.employee').search(cr, uid, [('user_id', '=', uid)], context=context)
-    if ids:
-        return ids[0]
-    return False
+from openerp.osv import osv, fields
+
+def _get_last_month_end():
+    """
+    获取上月最后一天
+    """
+    today = datetime.date.today()
+    last_day_of_last_month = datetime.date(today.year, today.month, 1) - datetime.timedelta(1)
+    return last_day_of_last_month
+
 
 class re_expense_expense(osv.osv):
+
     def _amount(self, cr, uid, ids, field_name, arg, context=None):
         res= {}
         for expense in self.browse(cr, uid, ids, context=context):
@@ -19,50 +22,53 @@ class re_expense_expense(osv.osv):
             res[expense.id] = total
         return res
 
-    def _get_currency(self, cr, uid, context=None):
-        user = self.pool.get('res.users').browse(cr, uid, [uid], context=context)[0]
-        return user.company_id.currency_id.id
-
     _name = 're.expense.expense'
     _description = "Expense"
     _order = "id desc"
 
     _columns = {
-        'name': fields.char('Description', size=128, required=True, readonly=True, states={'draft':[('readonly',False)], 'confirm':[('readonly',False)]}),
-        'id': fields.integer('Sheet ID', readonly=True),
-        'date': fields.date('Date', select=True, readonly=True, states={'draft':[('readonly',False)], 'confirm':[('readonly',False)]}),
-        'journal_id': fields.many2one('account.journal', 'Force Journal', help = "The journal used when the expense is done."),
-        'employee_id': fields.many2one('hr.employee', "Employee", required=True, readonly=True, states={'draft':[('readonly',False)], 'confirm':[('readonly',False)]}),
-        'user_id': fields.many2one('res.users', 'User', required=True),
-        'date_confirm': fields.date('Confirmation Date', select=True, help="Date of the confirmation of the sheet expense. It's filled when the button Confirm is pressed."),
-        'date_valid': fields.date('Validation Date', select=True, help="Date of the acceptation of the sheet expense. It's filled when the button Accept is pressed."),
-        'user_valid': fields.many2one('res.users', 'Validation By', readonly=True, states={'draft':[('readonly',False)], 'confirm':[('readonly',False)]}),
-        'account_move_id': fields.many2one('account.move', 'Ledger Posting'),
-        'line_ids': fields.one2many('hr.expense.line', 'expense_id', 'Expense Lines', readonly=True, states={'draft':[('readonly',False)]} ),
-        'note': fields.text('Note'),
-        'amount': fields.function(_amount, string='Total Amount', digits_compute=dp.get_precision('Account')),
-        'voucher_id': fields.many2one('account.voucher', "Employee's Receipt"),
-        'currency_id': fields.many2one('res.currency', 'Currency', required=True, readonly=True, states={'draft':[('readonly',False)], 'confirm':[('readonly',False)]}),
-        'department_id':fields.many2one('hr.department','Department', readonly=True, states={'draft':[('readonly',False)], 'confirm':[('readonly',False)]}),
-        'company_id': fields.many2one('res.company', 'Company', required=True),
+        'user': fields.many2one('res.users', '员工', required=True),
+        'date': fields.date('日期', select=True, readonly=True,states={'draft': [('readonly', False)]}),
+        'department': fields.text('部门', readonly=True,states={'draft': [('readonly', False)]}),
+        'note': fields.text('说明', readonly=True,states={'submitted': [('readonly', False)]}),
+        'total_amount': fields.function(_amount, readonly=True,string='总金额'),
+
+        'user_create': fields.many2one('res.users', '创建人', required=True),
+        'date_create': fields.datetime('创建时间',  readonly=True),
+
+        'user_check': fields.many2one('res.users', '审核人', required=True),
+        'date_check': fields.datetime('审核时间',  readonly=True),
+
+        'user_cancel': fields.many2one('res.users', '取消人', required=True),
+        'date_cancel': fields.datetime('取消时间', readonly=True),
+
+        'user_commit': fields.many2one('res.users', '提交人', required=True),
+        'date_commit': fields.datetime('提交时间', readonly=True),
+
         'state': fields.selection([
-            ('draft', 'New'),
-            ('cancelled', 'Refused'),
-            ('confirm', 'Waiting Approval'),
-            ('accepted', 'Approved'),
-            ('done', 'Waiting Payment'),
-            ('paid', 'Paid'),
+            ('draft', '新建'),
+            ('submitted', '已提交'),
+            ('done', '已完成'),
+            ('cancelled', '已取消'),
             ],
             'Status', readonly=True, track_visibility='onchange',
-            help='When the expense request is created the status is \'Draft\'.\n It is confirmed by the user and request is sent to admin, the status is \'Waiting Confirmation\'.\
-            \nIf the admin accepts it, the status is \'Accepted\'.\n If the accounting entries are made for the expense request, the status is \'Waiting Payment\'.'),
+        ),
+
+        'product_id': fields.many2one('product.product', '产品',readonly=True, states={'draft': [('readonly', False)]}),
+        'product_amount': fields.integer('产品数量',readonly=True, states={'draft': [('readonly', False)]}),
+        'expense_data': fields.date('费用日期', required=True, readonly=True, states={'draft': [('readonly', False)]}),
+        'expense_note': fields.text('费用备注', required=False,readonly=True, states={'draft': [('readonly', False)]}),
+        'order_no.': fields.text('单号', required=False,readonly=True, states={'draft': [('readonly', False)]}),
+        'auxiliary.': fields.text('辅助核算项', required=False,readonly=True, states={'draft': [('readonly', False)]}),
+        'amount': fields.integer(string='金额'),
 
     }
     _defaults = {
-        'company_id': lambda s, cr, uid, c: s.pool.get('res.company')._company_default_get(cr, uid, 'hr.employee', context=c),
         'date': fields.date.context_today,
+        'date_create': fields.datetime.now(),
+        'date_check': fields.datetime.now(),
+        'date_cancel': fields.datetime.now(),
+        'date_commit': fields.datetime.now(),
+        'expense_data':_get_last_month_end,
         'state': 'draft',
-        'employee_id': _employee_get,
-        'user_id': lambda cr, uid, id, c={}: id,
-        'currency_id': _get_currency,
     }
