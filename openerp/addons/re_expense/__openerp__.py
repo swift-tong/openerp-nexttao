@@ -22,7 +22,7 @@
 
 
 {
-    'name': '费用报销',
+    'name': 'Expenses',
     'version': '1.0',
     'category': '',
     'summary': 'Expenses Validation, Invoicing',
