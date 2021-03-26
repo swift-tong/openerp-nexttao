@@ -45,7 +45,7 @@ This module also uses analytic accounting and is compatible with the invoice on 
     """,
     'author': 'OpenERP SA',
     'website': 'http://www.openerp.com',
-    'depends': [],
+    'depends': ['base'],
     'data': [
         're_expense_view.xml',
     ],
