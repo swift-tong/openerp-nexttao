@@ -35,7 +35,7 @@
     'data': [
         'account_chart.xml',
         'l10n_chart_cn_wizard.xml',
-        're_expense_view.xml',
+        'base_data.xml',
     ],
     'license': 'GPL-3',
     'auto_install': False,
