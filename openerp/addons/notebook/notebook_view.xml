@@ -17,14 +17,6 @@
                             <field name="type"/>
                         </group>
                     </group>
-                    <notebook>
-                        <page string="test">
-
-                        </page>
-                        <page string="test2">
-                        </page>
-
-                    </notebook>
                 </form>
             </field>
         </record>
