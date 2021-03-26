@@ -83,7 +83,7 @@
             <field name="name">Expenses</field>
             <field name="res_model">re.expense.expense</field>
             <field name="view_type">form</field>
-            <field name="view_id" ref="view_expenses_tree"/>
+            <field name="view_id" ref="view_myexpenses_tree"/>
         </record>
 
         <menuitem id="myexpense" name="费用报销" parent="base.menu_management" action="myexpense_all"/>
