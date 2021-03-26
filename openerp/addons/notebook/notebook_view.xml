@@ -7,26 +7,24 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="notebook">
-                    <sheet>
+                    <group>
                         <group>
-                            <group>
-                                <field name="title"/>
-                                <field name="content"/>
-                            </group>
-                            <group>
-                                <field name="create_date"/>
-                                <field name="type"/>
-                            </group>
+                            <field name="title"/>
+                            <field name="content"/>
                         </group>
-                        <notebook>
-                            <page string="test">
+                        <group>
+                            <field name="create_date"/>
+                            <field name="type"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="test">
 
-                            </page>
-                            <page string="test2">
-                            </page>
+                        </page>
+                        <page string="test2">
+                        </page>
 
-                        </notebook>
-                    </sheet>
+                    </notebook>
                 </form>
             </field>
         </record>
