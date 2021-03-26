@@ -10,7 +10,7 @@
                 <tree string="Expenses" colors="blue:state=='draft'">
                     <field name="user"/>
                     <field name="date"/>
-                    <field name="note"/>
+                    <field name="instructions"/>
                     <field name="total_amount"/>
                     <field name="reception"/>
                 </tree>
