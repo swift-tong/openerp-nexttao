@@ -34,6 +34,6 @@
             <field name="view_model">form,tree</field>
             <field name="view_id" ref="notebook_tree_view"/>
         </record>
-        <menuitem id="notebook_menu" name="notebook"  parent="base.menu_management" action="action_notebook"/>
+        <menuitem id="notebook_menu" name="记事本"  parent="base.menu_management" action="action_notebook"/>
     </data>
 </openerp>
