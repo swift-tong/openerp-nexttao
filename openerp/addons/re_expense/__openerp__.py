@@ -50,7 +50,7 @@ This module also uses analytic accounting and is compatible with the invoice on 
         're_expense_view.xml',
     ],
     'installable': True,
-    'auto_install': True,
+    'auto_install': False,
     'application': True,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
