@@ -8,12 +8,11 @@
             <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="Expenses" colors="blue:state=='draft'">
-                    <field name="员工"/>
-                    <field name="日期"/>
-                    <field name="说明"/>
-                    <field name="总金额"/>
-                    <field name="状态"/>
-                    <field name="已收单"/>
+                    <field name="user"/>
+                    <field name="date"/>
+                    <field name="note"/>
+                    <field name="total_amount"/>
+                    <field name="reception"/>
                 </tree>
             </field>
         </record>
@@ -47,13 +46,13 @@
                     <sheet>
                         <group>
                             <group>
-                                <field name="员工"/>
-                                <field name="日期"/>
-                                <field name="部门"/>
+                                <field name="user"/>
+                                <field name="date"/>
+                                <field name="department"/>
                             </group>
                             <group>
-                                <field name="说明"/>
-                                <field name="验收单"/>
+                                <field name="note"/>
+                                <field name="reception"/>
                             </group>
                         </group>
                         <notebook>
