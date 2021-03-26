@@ -43,106 +43,38 @@
             <field eval="25" name="priority"/>
             <field name="arch" type="xml">
                 <form string="Expenses Sheet" version="7.0">
-                    <header>
-                        <button name="confirm" states="draft" string="Submit to Manager" type="workflow"
-                                class="oe_highlight"/>
-                        <button name="validate" states="confirm" string="Approve" type="workflow"
-                                groups="base.group_hr_user" class="oe_highlight"/>
-                        <button name="refuse" states="confirm,accepted" string="Refuse" type="workflow"
-                                groups="base.group_hr_user"/>
-                        <button name="draft" states="confirm,cancelled" string="Set to Draft" type="workflow"
-                                groups="base.group_hr_user"/>
-                        <button name="done" states="accepted" string="Generate Accounting Entries" type="workflow"
-                                groups="account.group_account_invoice" class="oe_highlight"/>
-                        <button name="action_view_receipt" states="done" string="Open Accounting Entries" type="object"
-                                groups="account.group_account_invoice"/>
-                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,accepted,done,paid"
-                               statusbar_colors='{"confirm":"blue","cancelled":"red"}'/>
-                    </header>
                     <sheet>
                         <group>
                             <group>
-                                <field name="employee_id" on_change="onchange_employee_id(employee_id)"/>
-                                <field name="date"/>
-                                <field name="department_id"/>
-                                <field name="company_id" groups="base.group_multi_company"/>
+                                <field name="员工"/>
+                                <field name="日期"/>
+                                <field name="部门"/>
                             </group>
                             <group>
-                                <field name="name"/>
-                                <field name="user_valid" attrs="{'invisible': [('state','=','draft')]}"/>
-                                <field name="currency_id" groups="base.group_multi_currency"
-                                       on_change="onchange_currency_id(currency_id, company_id)"/>
+                                <field name="说明"/>
+                                <field name="验收单"/>
                             </group>
                         </group>
                         <notebook>
-                            <page string="Description">
+                            <page string="说明">
                                 <field name="line_ids"
-                                       context="{'currency_id': currency_id, 'default_analytic_account': context.get('analytic_account', '')}">
-                                    <form string="Expense Lines" version="7.0">
-                                        <group>
-                                            <group>
-                                                <field name="product_id"
-                                                       on_change="onchange_product_id(product_id, context)"
-                                                       context="{'default_hr_expense_ok':1}"/>
-                                                <field name="name"/>
-                                                <field name="ref"/>
-                                                <field domain="[('type','=','normal')]" name="analytic_account"
-                                                       groups="analytic.group_analytic_accounting"/>
-                                            </group>
-                                            <group>
-                                                <field name="unit_amount"/>
-                                                <label for="unit_quantity"/>
-                                                <div>
-                                                    <field name="unit_quantity" class="oe_inline"/>
-                                                    <field name="uom_id"
-                                                           on_change="onchange_uom(product_id, uom_id, context)"
-                                                           class="oe_inline"/>
-                                                </div>
-                                                <field name="date_value"/>
-                                            </group>
-                                        </group>
-                                    </form>
-                                    <tree string="Expense Lines" editable="bottom">
-                                        <field name="sequence" invisible="1"/>
-                                        <field name="product_id" on_change="onchange_product_id(product_id, context)"
-                                               context="{'default_hr_expense_ok':1}"/>
-                                        <field name="date_value" string="Expense Date"/>
-                                        <field name="name"/>
-                                        <field name="ref"/>
-                                        <field domain="[('type','in',['normal','contract'])]" name="analytic_account"
-                                               groups="analytic.group_analytic_accounting"/>
-                                        <field name="uom_id" on_change="onchange_uom(product_id, uom_id, context)"/>
-                                        <field name="unit_amount"/>
-                                        <field name="unit_quantity"/>
-                                        <field name="total_amount" sum="Total"/>
-                                    </tree>
-                                </field>
+                                       context="{'currency_id': currency_id, 'default_analytic_account': context.get('analytic_account', '')}"
+                                       modifiers="{'readonly': [['state', 'not in', ['draft']]]}"/>
                                 <group>
                                     <div>
-                                        <separator string="Notes"/>
-                                        <field name="note" placeholder="Free Notes"/>
+                                        <separator string="备注"/>
+                                        <field name="note" placeholder="备注" modifiers="{}"/>
                                     </div>
                                     <group class="oe_subtotal_footer oe_right">
-                                        <field name="amount" widget="monetary"
+                                        <field name="total_amount" widget="monetary"
                                                options="{'currency_field': 'currency_id'}"
-                                               class="oe_subtotal_footer_separator"/>
-                                    </group>
-                                </group>
-                            </page>
-                            <page string="Accounting" groups="account.group_account_user">
-                                <group>
-                                    <group string="Accounting Data">
-                                        <field name="journal_id" widget="selection"
-                                               domain="[('type', '=', 'purchase')]"/>
-                                        <field name="account_move_id"/>
-                                        <field name="voucher_id" invisible="1"
-                                               context="{'form_view_ref': 'account_voucher.view_purchase_receipt_form'}"/>
+                                               class="oe_subtotal_footer_separator" modifiers="{'readonly': true}"/>
                                     </group>
                                 </group>
                             </page>
                         </notebook>
                     </sheet>
-                    <div class="oe_chatter">å
+                    <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers"/>
                         <field name="message_ids" widget="mail_thread"/>
                     </div>

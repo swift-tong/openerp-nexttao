@@ -1,5 +1,5 @@
 import datetime
-
+import openerp.addons.decimal_precision as dp
 from openerp.osv import osv, fields
 
 def _get_last_month_end():
@@ -53,14 +53,7 @@ class re_expense_expense(osv.osv):
             ],
             'Status', readonly=True, track_visibility='onchange',
         ),
-
-        'product_id': fields.many2one('product.product', '产品',readonly=True, states={'draft': [('readonly', False)]}),
-        'product_amount': fields.integer('产品数量',readonly=True, states={'draft': [('readonly', False)]}),
-        'expense_data': fields.date('费用日期', required=True, readonly=True, states={'draft': [('readonly', False)]}),
-        'expense_note': fields.text('费用备注', required=False,readonly=True, states={'draft': [('readonly', False)]}),
-        'order_no.': fields.text('单号', required=False,readonly=True, states={'draft': [('readonly', False)]}),
-        'auxiliary.': fields.text('辅助核算项', required=False,readonly=True, states={'draft': [('readonly', False)]}),
-        'amount': fields.integer(string='金额'),
+        'line_ids': fields.one2many('re.expense.line', 'expense_id', 'Expense Lines'),
 
     }
     _defaults = {
@@ -69,6 +62,32 @@ class re_expense_expense(osv.osv):
         'date_check': fields.datetime.now(),
         'date_cancel': fields.datetime.now(),
         'date_commit': fields.datetime.now(),
-        'expense_data':_get_last_month_end,
         'state': 'draft',
+    }
+
+class re_expense_line(osv.osv):
+    _name = "re.expense.line"
+    _description = "Expense Line"
+
+    def _amount(self, cr, uid, ids, field_name, arg, context=None):
+        if not ids:
+            return {}
+        cr.execute("SELECT l.id,COALESCE(SUM(l.product_amount*l.amount),0) AS amount FROM hr_expense_line l WHERE id IN %s GROUP BY l.id ",(tuple(ids),))
+        res = dict(cr.fetchall())
+        return res
+
+    _columns = {
+        'expense_id': fields.many2one('re.expense.expense', 'Expense'),
+        'product_id': fields.many2one('product.product', '产品',readonly=True, states={'draft': [('readonly', False)]}),
+        'product_amount': fields.integer('产品数量',readonly=True, states={'draft': [('readonly', False)]}),
+        'expense_data': fields.date('费用日期', required=True, readonly=True, states={'draft': [('readonly', False)]}),
+        'expense_note': fields.text('费用备注', required=False,readonly=True, states={'draft': [('readonly', False)]}),
+        'order_no.': fields.text('单号', required=False,readonly=True, states={'draft': [('readonly', False)]}),
+        'auxiliary.': fields.text('辅助核算项', required=False,readonly=True, states={'draft': [('readonly', False)]}),
+        'amount': fields.integer(string='金额'),
+        'total_amount': fields.function(_amount, string='合计', digits_compute=dp.get_precision('Account')),
+        }
+
+    _defaults = {
+        'expense_data':_get_last_month_end,
     }
