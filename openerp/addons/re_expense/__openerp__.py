@@ -20,14 +20,37 @@
 #
 ##############################################################################
 
+
 {
-    "name":"notebook type",
-    "version":"1.0",
-    "description":"demo",
-    "author":"tongweiqing",
-    "depends":[],
-    "update_xml": ["notebook_type_view.xml",],
+    'name': '费用报销',
+    'version': '1.0',
+    'category': '',
+    'summary': 'Expenses Validation, Invoicing',
+    'description': """
+Manage expenses by Employees
+============================
+
+This application allows you to manage your employees' daily expenses. It gives you access to your employees’ fee notes and give you the right to complete and validate or refuse the notes. After validation it creates an invoice for the employee.
+Employee can encode their own expenses and the validation flow puts it automatically in the accounting after validation by managers.
+
+
+The whole flow is implemented as:
+---------------------------------
+* Draft expense
+* Confirmation of the sheet by the employee
+* Validation by his manager
+* Validation by the accountant and receipt creation
+
+This module also uses analytic accounting and is compatible with the invoice on timesheet module so that you are able to automatically re-invoice your customers' expenses if your work by project.
+    """,
+    'author': 'OpenERP SA',
+    'website': 'http://www.openerp.com',
+    'depends': [],
+    'data': [
+        're_expense_view.xml',
+    ],
     'installable': True,
     'auto_install': True,
+    'application': True,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
