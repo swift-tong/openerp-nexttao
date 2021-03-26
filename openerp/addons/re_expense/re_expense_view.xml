@@ -2,7 +2,7 @@
 <openerp>
     <data>
         <!-- Expenses -->
-        <record id="view_expenses_tree" model="ir.ui.view">
+        <record id="view_myexpenses_tree" model="ir.ui.view">
             <field name="name">re.expense.expense.tree</field>
             <field name="model">re.expense.expense</field>
             <field name="type">tree</field>
@@ -17,7 +17,7 @@
             </field>
         </record>
 
-        <record id="view_expenses_form" model="ir.ui.view">
+        <record id="view_myexpenses_form" model="ir.ui.view">
             <field name="name">re.expense.form</field>
             <field name="model">re.expense.expense</field>
             <field eval="25" name="priority"/>
@@ -83,13 +83,13 @@
             </field>
         </record>
 
-        <record id="expense_all" model="ir.actions.act_window">
+        <record id="myexpense_all" model="ir.actions.act_window">
             <field name="name">Expenses</field>
             <field name="res_model">re.expense.expense</field>
             <field name="view_type">form</field>
             <field name="view_id" ref="view_expenses_tree"/>
         </record>
 
-        <menuitem id="next_id_49" name="费用报销" parent="base.menu_management" action="expense_all"/>
+        <menuitem id="myexpense" name="费用报销" parent="base.menu_management" action="myexpense_all"/>
     </data>
 </openerp>
