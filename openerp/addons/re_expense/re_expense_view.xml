@@ -156,7 +156,7 @@
 
         <record id="expense_all" model="ir.actions.act_window">
             <field name="name">Expenses</field>
-            <field name="res_model">hr.expense.expense</field>
+            <field name="res_model">re.expense.expense</field>
             <field name="view_type">form</field>
             <field name="search_view_id" ref="view_hr_expense_filter"/>
             <field name="view_id" ref="view_expenses_tree"/>
