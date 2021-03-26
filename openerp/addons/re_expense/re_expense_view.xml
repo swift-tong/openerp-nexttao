@@ -12,6 +12,7 @@
                     <field name="date"/>
                     <field name="instructions"/>
                     <field name="total_amount"/>
+                    <field name="state"/>
                     <field name="reception"/>
                 </tree>
             </field>
