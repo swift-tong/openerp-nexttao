@@ -41,6 +41,7 @@
             <field name="name">re.expense.form</field>
             <field name="model">re.expense.expense</field>
             <field eval="25" name="priority"/>
+            <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="Expenses Sheet" version="7.0">
                     <sheet>
