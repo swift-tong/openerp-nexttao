@@ -30,7 +30,7 @@ class re_expense_expense(osv.osv):
     _order = "id desc"
 
     _columns = {
-        'user': fields.many2one('res.users', u'员工', required=True),
+        'user': fields.many2one('res.users', u'员工', required=True,readonly=True),
         'date': fields.date(u'日期', select=True, readonly=True,states={'draft': [('readonly', False)]}),
         'department': fields.text(u'部门', readonly=True,states={'draft': [('readonly', False)]}),
         'instructions': fields.text(u'说明', readonly=True,states={'submitted': [('readonly', False)]}),
