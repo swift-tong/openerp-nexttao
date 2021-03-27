@@ -40,16 +40,16 @@ class re_expense_expense(osv.osv):
         'note': fields.text(u'备注', readonly=True,
                             states={'draft': [('readonly', False)], 'submitted': [('readonly', False)]}),
 
-        'user_create': fields.many2one('res.users', u'创建人', required=True),
+        'user_create': fields.many2one('res.users', u'创建人', readonly=True),
         'date_create': fields.datetime(u'创建时间', readonly=True),
 
-        'user_submit': fields.many2one('res.users', u'提交人', required=True),
+        'user_submit': fields.many2one('res.users', u'提交人', readonly=True),
         'date_submit': fields.datetime(u'提交时间', readonly=True),
 
-        'user_accept': fields.many2one('res.users', u'审核人', required=True),
+        'user_accept': fields.many2one('res.users', u'审核人', readonly=True),
         'date_accept': fields.datetime(u'审核时间', readonly=True),
 
-        'user_reject': fields.many2one('res.users', u'驳回人', required=True),
+        'user_reject': fields.many2one('res.users', u'驳回人', readonly=True),
         'date_reject': fields.datetime(u'驳回时间', readonly=True),
 
         'state': fields.selection([
