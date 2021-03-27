@@ -30,18 +30,11 @@
             <field name="action">expense_accept()</field>
         </record>
 
-        <record id="act_re_refused" model="workflow.activity">
+        <record id="act_re_rejected" model="workflow.activity">
             <field name="wkf_id" ref="wkf_re_expenses"/>
-            <field name="name">refused</field>
+            <field name="name">rejected</field>
             <field name="kind">function</field>
             <field name="action">expense_canceled()</field>
-        </record>
-
-        <record id="act_re_done" model="workflow.activity">
-            <field name="wkf_id" ref="wkf_re_expenses"/>
-            <field name="name">done</field>
-            <field name="kind">function</field>
-            <field name="action">action_receipt_create()</field>
         </record>
 
         <record id="re_t1" model="workflow.transition">
@@ -53,21 +46,14 @@
         <record id="re_t2" model="workflow.transition">
             <field name="act_from" ref="act_re_submit"/>
             <field name="act_to" ref="act_re_accepted"/>
-            <field name="signal">validate</field>
+            <field name="signal">accept</field>
             <field name="group_id" ref="base.group_hr_user"/>
         </record>
 
         <record id="re_t3" model="workflow.transition">
             <field name="act_from" ref="act_re_submit"/>
-            <field name="act_to" ref="act_re_refused"/>
+            <field name="act_to" ref="act_re_rejected"/>
             <field name="signal">refuse</field>
-            <field name="group_id" ref="base.group_hr_user"/>
-        </record>
-
-        <record id="re_t4" model="workflow.transition">
-            <field name="act_from" ref="act_re_accepted"/>
-            <field name="act_to" ref="act_re_done"/>
-            <field name="signal">done</field>
             <field name="group_id" ref="base.group_hr_user"/>
         </record>
 

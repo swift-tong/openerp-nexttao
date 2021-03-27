@@ -28,12 +28,14 @@
                     <header>
                         <button name="submit" states="draft" string="提交" type="workflow"
                                 class="oe_highlight"/>
-                        <button name="validate" states="submitted" string="审核通过" type="workflow"
+                        <button name="cancel" states="draft" string="取消" type="workflow"
+                                class="oe_highlight"/>
+                        <button name="accept" states="submitted" string="审核通过" type="workflow"
                                 groups="base.group_hr_user" class="oe_highlight"/>
-                        <button name="refuse" states="submitted" string="驳回" type="workflow"
+                        <button name="rejected" states="submitted" string="驳回" type="workflow"
                                 groups="base.group_hr_user"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,submitted,done"
-                               statusbar_colors='{"done":"blue","draft":"red","submitted":"red"}'/>
+                               statusbar_colors='{"done":"blue","submitted":"red"}'/>
                     </header>
                     <sheet>
                         <group>
@@ -90,16 +92,16 @@
                                         <field name="date_create"/>
                                     </group>
                                     <group>
+                                        <field name="user_commit"/>
+                                        <field name="date_commit"/>
+                                    </group>
+                                    <group>
                                         <field name="user_check"/>
                                         <field name="date_check"/>
                                     </group>
                                     <group>
                                         <field name="user_cancel"/>
                                         <field name="date_cancel"/>
-                                    </group>
-                                    <group>
-                                        <field name="user_commit"/>
-                                        <field name="date_commit"/>
                                     </group>
                                 </group>
                             </page>
