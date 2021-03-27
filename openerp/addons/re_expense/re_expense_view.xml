@@ -92,16 +92,16 @@
                                         <field name="date_create"/>
                                     </group>
                                     <group>
-                                        <field name="user_commit"/>
-                                        <field name="date_commit"/>
+                                        <field name="user_submit"/>
+                                        <field name="date_submit"/>
                                     </group>
                                     <group>
-                                        <field name="user_check"/>
-                                        <field name="date_check"/>
+                                        <field name="user_accept"/>
+                                        <field name="date_accept"/>
                                     </group>
                                     <group>
-                                        <field name="user_cancel"/>
-                                        <field name="date_cancel"/>
+                                        <field name="user_reject"/>
+                                        <field name="date_reject"/>
                                     </group>
                                 </group>
                             </page>
