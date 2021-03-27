@@ -66,7 +66,7 @@ class re_expense_expense(osv.osv):
     _defaults = {
         'date': fields.date.context_today,
         'user_create': lambda cr, uid, id, c={}: id,
-        'date_create': fields.datetime.now(),
+        'date_create': time.strftime('%Y-%m-%d %H:%M:%S'),
         # 'date_check': fields.datetime.now(),
         # 'date_cancel': fields.datetime.now(),
         # 'date_commit': fields.datetime.now(),
@@ -134,7 +134,7 @@ class re_expense_line(osv.osv):
         'expense_note': fields.text(u'费用备注', required=False, readonly=True, states={'draft': [('readonly', False)]}),
         'order_no.': fields.text(u'单号', required=False, readonly=True, states={'draft': [('readonly', False)]}),
         'auxiliary': fields.text(u'辅助核算项', required=False, readonly=True, states={'draft': [('readonly', False)]}),
-        'amount': fields.integer(string=u'金额', digits_compute=dp.get_precision('Product Price')),
+        'amount': fields.float(string=u'金额', digits_compute=dp.get_precision('Product Price')),
         'total_amount': fields.function(_amount, string=u'合计', digits_compute=dp.get_precision('Account')),
     }
 
