@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import datetime
+import time
+
 import openerp.addons.decimal_precision as dp
 from openerp.osv import osv, fields
 
@@ -67,6 +69,18 @@ class re_expense_expense(osv.osv):
         'date_commit': fields.datetime.now(),
         'state': 'draft',
     }
+
+    def expense_submit(self, cr, uid, ids, context=None):
+        return self.write(cr, uid, ids, {'state': 'submitted', 'date_create': time.strftime('%Y-%m-%d %H:%M:%S')}, context=context)
+
+    def expense_accept(self, cr, uid, ids, context=None):
+        return self.write(cr, uid, ids, {'state': 'accepted', 'date_valid': time.strftime('%Y-%m-%d %H:%M:%S'), 'user_valid': uid}, context=context)
+
+    def expense_canceled(self, cr, uid, ids, context=None):
+        return self.write(cr, uid, ids, {'state': 'cancelled'}, context=context)
+
+    def action_receipt_create(self, cr, uid, ids,):
+        return self.write(cr, uid, ids, {'state': 'cancelled'}, context=context)
 
 class product_product(osv.osv):
     _inherit = "product.product"
