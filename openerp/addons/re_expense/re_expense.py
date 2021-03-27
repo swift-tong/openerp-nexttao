@@ -68,6 +68,14 @@ class re_expense_expense(osv.osv):
         'state': 'draft',
     }
 
+class product_product(osv.osv):
+    _inherit = "product.product"
+    _columns = {
+        'expense_ok': fields.boolean('可以报销'),
+    }
+
+product_product()
+
 class re_expense_line(osv.osv):
     _name = "re.expense.line"
     _description = "Expense Line"
@@ -82,13 +90,13 @@ class re_expense_line(osv.osv):
     _columns = {
         'expense_id': fields.many2one('re.expense.expense', 'Expense'),
         'product_id': fields.many2one('product.product', u'产品',readonly=True, states={'draft': [('readonly', False)]}),
-        'product_amount': fields.integer(u'产品数量',readonly=True, states={'draft': [('readonly', False)]}),
+        'product_amount': fields.integer(u'数量',readonly=True, states={'draft': [('readonly', False)]}),
         'expense_data': fields.date(u'费用日期', required=True, readonly=True, states={'draft': [('readonly', False)]}),
         'expense_note': fields.text(u'费用备注', required=False,readonly=True, states={'draft': [('readonly', False)]}),
         'order_no.': fields.text(u'单号', required=False,readonly=True, states={'draft': [('readonly', False)]}),
         'auxiliary.': fields.text(u'辅助核算项', required=False,readonly=True, states={'draft': [('readonly', False)]}),
         'amount': fields.integer(string=u'金额'),
-        'total_amount': fields.function(_amount, string=u'合计', digits_compute=dp.get_precision('Account')),
+        'total_amount': fields.function(_amount, string=u'合计'),
         }
 
     _defaults = {
