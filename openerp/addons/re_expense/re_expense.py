@@ -32,10 +32,10 @@ class re_expense_expense(osv.osv):
     _columns = {
         'user': fields.many2one('res.users', u'员工', required=True,readonly=True),
         'date': fields.date(u'日期', select=True, readonly=True,states={'draft': [('readonly', False)]}),
-        'department': fields.text(u'部门', readonly=True,states={'draft': [('readonly', False)]}),
+        'department': fields.text('hr.department',u'部门', readonly=True,states={'draft': [('readonly', False)]}),
         'instructions': fields.text(u'说明', readonly=True,states={'submitted': [('readonly', False)]}),
         'total_amount': fields.function(_amount, readonly=True,string=u'总金额'),
-        'reception': fields.text(u'已收单', readonly=True, states={'submitted': [('readonly', False)]}),
+        'reception': fields.boolean(u'已收单', readonly=True, states={'submitted': [('readonly', False)]}),
         'note': fields.text(u'备注', readonly=True, states={'submitted': [('readonly', False)]}),
 
         'user_create': fields.many2one('res.users', u'创建人', required=True),

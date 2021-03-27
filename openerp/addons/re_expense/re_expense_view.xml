@@ -43,7 +43,7 @@
                                 <field name="department"/>
                             </group>
                             <group>
-                                <field name="note"/>
+                                <field name="instructions"/>
                                 <field name="reception"/>
                             </group>
                         </group>
