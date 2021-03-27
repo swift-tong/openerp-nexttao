@@ -9,7 +9,7 @@
         </record>
 
         <record id="act_re_draft" model="workflow.activity">
-            <field name="wkf_id" ref="wkf_expenses"/>
+            <field name="wkf_id" ref="wkf_re_expenses"/>
             <field name="name">draft</field>
             <field name="flow_start">True</field>
             <field name="kind">function</field>
@@ -24,21 +24,21 @@
         </record>
 
         <record id="act_re_accepted" model="workflow.activity">
-            <field name="wkf_id" ref="wkf_expenses"/>
+            <field name="wkf_id" ref="wkf_re_expenses"/>
             <field name="name">accepted</field>
             <field name="kind">function</field>
             <field name="action">expense_accept()</field>
         </record>
 
         <record id="act_re_refused" model="workflow.activity">
-            <field name="wkf_id" ref="wkf_expenses"/>
+            <field name="wkf_id" ref="wkf_re_expenses"/>
             <field name="name">refused</field>
             <field name="kind">function</field>
             <field name="action">expense_canceled()</field>
         </record>
 
         <record id="act_re_done" model="workflow.activity">
-            <field name="wkf_id" ref="wkf_expenses"/>
+            <field name="wkf_id" ref="wkf_re_expenses"/>
             <field name="name">done</field>
             <field name="kind">function</field>
             <field name="action">action_receipt_create()</field>
