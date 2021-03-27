@@ -33,10 +33,10 @@ class re_expense_expense(osv.osv):
         'user': fields.many2one('res.users', u'员工', required=True,readonly=True),
         'date': fields.date(u'日期', select=True, readonly=True,states={'draft': [('readonly', False)]}),
         'department': fields.many2one('hr.department',u'部门', readonly=True,states={'draft': [('readonly', False)]}),
-        'instructions': fields.text(u'说明', readonly=True,states={'draft': [('readonly', False)]}),
+        'instructions': fields.char(u'说明', readonly=True,states={'draft': [('readonly', False)]}),
         'total_amount': fields.function(_amount, readonly=True,string=u'总金额'),
         'reception': fields.boolean(u'已收单', readonly=True, states={'submitted': [('readonly', False)]}),
-        'note': fields.text(u'备注', readonly=True, states={'submitted': [('readonly', False)]}),
+        'note': fields.text(u'备注', readonly=True, states={'draft':[('readonly',False)],'submitted': [('readonly', False)]}),
 
         'user_create': fields.many2one('res.users', u'创建人', required=True),
         'date_create': fields.datetime(u'创建时间',  readonly=True),
@@ -80,7 +80,7 @@ class re_expense_expense(osv.osv):
     def expense_canceled(self, cr, uid, ids, context=None):
         return self.write(cr, uid, ids, {'state': 'cancelled'}, context=context)
 
-    def action_receipt_create(self, cr, uid, ids,):
+    def action_receipt_create(self, cr, uid, ids, context=None):
         return self.write(cr, uid, ids, {'state': 'cancelled'}, context=context)
 
 class product_product(osv.osv):
