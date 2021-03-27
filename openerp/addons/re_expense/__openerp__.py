@@ -29,7 +29,7 @@
     'description': """童维青测试""",
     'author': '童维青',
     'website': 'http://www.openerp.com',
-    'depends': ['base'],
+    'depends': ['base','account_voucher', 'account_accountant'],
     'data': [
         're_expense_view.xml',
     ],
