@@ -75,25 +75,28 @@ class re_expense_expense(osv.osv):
     }
 
     def expense_submit(self, cr, uid, ids, context=None):
+        user = lambda cr, uid, id, c={}: id
         data = {
             'state': 'submitted',
-            'user_submit': lambda cr, uid, id, c={}: id,
+            'user_submit': user,
             'date_submit': time.strftime('%Y-%m-%d %H:%M:%S')
         }
         return self.write(cr, uid, ids, data, context=context)
 
     def expense_accept(self, cr, uid, ids, context=None):
+        user = lambda cr, uid, id, c={}: id
         data = {
             'state': 'done',
-            'user_accept': lambda cr, uid, id, c={}: id,
+            'user_accept': user,
             'date_accept': time.strftime('%Y-%m-%d %H:%M:%S')
         }
         return self.write(cr, uid, ids,data,context=context)
 
     def expense_rejected(self, cr, uid, ids, context=None):
+        user = lambda cr, uid, id, c={}: id
         data = {
             'state': 'rejected',
-            'user_rejected': lambda cr, uid, id, c={}: id,
+            'user_rejected': user,
             'date_rejected': time.strftime('%Y-%m-%d %H:%M:%S')
         }
         return self.write(cr, uid, ids, data, context=context)
