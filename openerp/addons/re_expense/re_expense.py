@@ -68,6 +68,7 @@ class re_expense_expense(osv.osv):
         'date_cancel': fields.datetime.now(),
         'date_commit': fields.datetime.now(),
         'state': 'draft',
+        'user' :  lambda cr, uid, id, c={}: id,
     }
 
     def expense_submit(self, cr, uid, ids, context=None):
