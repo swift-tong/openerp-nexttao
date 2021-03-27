@@ -109,10 +109,20 @@ class re_expense_line(osv.osv):
         'expense_note': fields.text(u'费用备注', required=False,readonly=True, states={'draft': [('readonly', False)]}),
         'order_no.': fields.text(u'单号', required=False,readonly=True, states={'draft': [('readonly', False)]}),
         'auxiliary.': fields.text(u'辅助核算项', required=False,readonly=True, states={'draft': [('readonly', False)]}),
-        'amount': fields.integer(string=u'金额'),
-        'total_amount': fields.function(_amount, string=u'合计'),
+        'amount': fields.integer(string=u'金额',digits_compute=dp.get_precision('Product Price')),
+        'total_amount': fields.function(_amount, string=u'合计',digits_compute=dp.get_precision('Account')),
         }
 
     _defaults = {
         'expense_data':_get_last_month_end,
     }
+
+    def onchange_product_id(self, cr, uid, ids, product_id, context=None):
+        res = {}
+        if product_id:
+            product = self.pool.get('product.product').browse(cr, uid, product_id, context=context)
+            res['name'] = product.name
+            amount_unit = product.price_get('standard_price')[product.id]
+            res['unit_amount'] = amount_unit
+            res['uom_id'] = product.uom_id.id
+        return {'value': res}
