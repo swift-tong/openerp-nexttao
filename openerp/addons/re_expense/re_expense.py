@@ -12,7 +12,8 @@ def _get_last_month_end(obj, cr, uid, context=None):
     """
     today = datetime.date.today()
     last_day_of_last_month = datetime.date(today.year, today.month, 1) - datetime.timedelta(1)
-    return last_day_of_last_month
+    ret = last_day_of_last_month.strftime("%Y-%m-%d")
+    return ret
 
 
 class re_expense_expense(osv.osv):
