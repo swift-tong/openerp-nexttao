@@ -4268,7 +4268,7 @@ class BaseModel(object):
 
         if self._log_access:
             upd0.append('write_uid=%s')
-            upd0.append("write_date=(now() at time zone 'UTC')")
+            upd0.append("write_date=(now() at time zone 'Asia/Shanghai')")
             upd1.append(user)
 
         if len(upd0):
@@ -4560,7 +4560,7 @@ class BaseModel(object):
                 self._check_selection_field_value(cr, user, field, vals[field], context=context)
         if self._log_access:
             upd0 += ',create_uid,create_date,write_uid,write_date'
-            upd1 += ",%s,(now() at time zone 'UTC'),%s,(now() at time zone 'UTC')"
+            upd1 += ",%s,(now() at time zone 'Asia/Shanghai'),%s,(now() at time zone 'Asia/Shanghai')"
             upd2.extend((user, user))
         cr.execute('insert into "'+self._table+'" (id'+upd0+") values ("+str(id_new)+upd1+')', tuple(upd2))
         upd_todo.sort(lambda x, y: self._columns[x].priority-self._columns[y].priority)
