@@ -27,11 +27,11 @@
                 <form string="Expenses Sheet" version="7.0">
                     <header>
                         <button name="submit" states="draft" string="提交" type="workflow"
-                                class="oe_highlight"/>
+                                class="oe_highlight" groups="aa_zhy.sale_users"/>
                         <button name="accept" states="submitted" string="审核通过" type="workflow"
-                                groups="base.group_hr_user" class="oe_highlight"/>
+                                groups="aa_zhy.sale_manager" class="oe_highlight"/>
                         <button name="reject" states="submitted" string="驳回" type="workflow"
-                                groups="base.group_hr_user"/>
+                                groups="aa_zhy.sale_manager" />
                         <field name="state" widget="statusbar" statusbar_visible="draft,submitted,done"
                                statusbar_colors='{"done":"blue","submitted":"red"}'/>
                     </header>
