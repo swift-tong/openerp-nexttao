@@ -57,7 +57,6 @@ class re_expense_expense(osv.osv):
             ('draft', u'草稿'),
             ('submitted', u'已提交'),
             ('done', u'已完成'),
-            ('rejected', u'已驳回'),
         ],
             '状态', readonly=True
         ),
@@ -94,7 +93,7 @@ class re_expense_expense(osv.osv):
 
     def expense_rejected(self, cr, uid, ids, context=None):
         data = {
-            'state': 'rejected',
+            'state': 'draft',
             'user_rejected': uid,
             'date_rejected': time.strftime('%Y-%m-%d %H:%M:%S')
         }
