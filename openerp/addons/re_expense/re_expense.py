@@ -59,7 +59,7 @@ class re_expense_expense(osv.osv):
             ('done', u'已完成'),
             ('rejected', u'已驳回'),
         ],
-            '状态', readonly=True, track_visibility='onchange'
+            '状态', readonly=True
         ),
         'line_ids': fields.one2many('re.expense.line', 'expense_id', 'Expense Lines'),
 
@@ -121,7 +121,7 @@ class re_expense_line(osv.osv):
         if not ids:
             return {}
         cr.execute(
-            "SELECT l.id,COALESCE(SUM(l.product_amount*l.amount),0) AS amount FROM hr_expense_line l WHERE id IN %s GROUP BY l.id ",
+            "SELECT l.id,COALESCE(SUM(l.product_amount*l.amount),0) AS amount FROM re_expense_line l WHERE id IN %s GROUP BY l.id ",
             (tuple(ids),))
         res = dict(cr.fetchall())
         return res
