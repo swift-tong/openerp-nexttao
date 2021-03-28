@@ -132,9 +132,9 @@ class re_expense_line(osv.osv):
         'product_amount': fields.integer(u'数量'),
         # 'expense_data': fields.date(u'费用日期', required=True, readonly=True, states={'draft': [('readonly', False)]}),
         'expense_data': fields.date(u'费用日期'),
-        'expense_note': fields.text(u'费用备注', required=False),
-        'order_no.': fields.text(u'单号', required=False),
-        'auxiliary': fields.text(u'辅助核算项', required=False),
+        'expense_note': fields.char(u'费用备注', required=False),
+        'order_no.': fields.char(u'单号', required=False),
+        'auxiliary': fields.char(u'辅助核算项', required=False),
         'amount': fields.float(string=u'金额', digits_compute=dp.get_precision('Product Price')),
         'total_amount': fields.function(_amount, string=u'合计', digits_compute=dp.get_precision('Account')),
     }
