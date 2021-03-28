@@ -82,6 +82,7 @@ class re_expense_expense(osv.osv):
             'user_submit': muser,
             'date_submit': time.strftime('%Y-%m-%d %H:%M:%S')
         }
+        print data
         return self.write(cr, uid, ids, data, context=context)
 
     def expense_accept(self, cr, uid, ids, context=None):
