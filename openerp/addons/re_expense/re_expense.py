@@ -23,7 +23,7 @@ class re_expense_expense(osv.osv):
         for expense in self.browse(cr, uid, ids, context=context):
             total = 0.0
             for line in expense.line_ids:
-                total += line.unit_amount * line.unit_quantity
+                total += line.product_amount * line.amount
             res[expense.id] = total
         return res
 
