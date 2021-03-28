@@ -34,7 +34,7 @@
             <field name="wkf_id" ref="wkf_re_expenses"/>
             <field name="name">rejected</field>
             <field name="kind">function</field>
-            <field name="action">expense_canceled()</field>
+            <field name="action">expense_rejected()</field>
         </record>
 
         <record id="re_t1" model="workflow.transition">
