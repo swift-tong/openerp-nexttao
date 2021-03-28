@@ -120,6 +120,6 @@
             <field name="view_id" ref="view_myexpenses_tree"/>
         </record>
 
-        <menuitem id="myexpense" name="费用报销" parent="base.menu_management" action="myexpense_all"/>
+        <menuitem id="myexpense" name="费用报销" sequence="0" action="myexpense_all"/>
     </data>
 </openerp>
