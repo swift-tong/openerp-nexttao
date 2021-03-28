@@ -127,13 +127,13 @@ class re_expense_line(osv.osv):
 
     _columns = {
         'expense_id': fields.many2one('re.expense.expense', 'Expense'),
-        'product_id': fields.many2one('product.product', u'产品', readonly=True, states={'draft': [('readonly', False)]}),
-        'product_amount': fields.integer(u'数量', readonly=True, states={'draft': [('readonly', False)]}),
+        'product_id': fields.many2one('product.product', u'产品'),
+        'product_amount': fields.integer(u'数量'),
         # 'expense_data': fields.date(u'费用日期', required=True, readonly=True, states={'draft': [('readonly', False)]}),
-        'expense_data': fields.date(u'费用日期',  readonly=True, states={'draft': [('readonly', False)]}),
-        'expense_note': fields.text(u'费用备注', required=False, readonly=True, states={'draft': [('readonly', False)]}),
-        'order_no.': fields.text(u'单号', required=False, readonly=True, states={'draft': [('readonly', False)]}),
-        'auxiliary': fields.text(u'辅助核算项', required=False, readonly=True, states={'draft': [('readonly', False)]}),
+        'expense_data': fields.date(u'费用日期'),
+        'expense_note': fields.text(u'费用备注', required=False),
+        'order_no.': fields.text(u'单号', required=False),
+        'auxiliary': fields.text(u'辅助核算项', required=False),
         'amount': fields.float(string=u'金额', digits_compute=dp.get_precision('Product Price')),
         'total_amount': fields.function(_amount, string=u'合计', digits_compute=dp.get_precision('Account')),
     }
