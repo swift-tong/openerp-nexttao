@@ -76,29 +76,26 @@ class re_expense_expense(osv.osv):
     }
 
     def expense_submit(self, cr, uid, ids, context=None):
-        muser = lambda cr, uid, id, c={}: id
         data = {
             'state': 'submitted',
-            'user_submit': muser,
+            'user_submit': uid,
             'date_submit': time.strftime('%Y-%m-%d %H:%M:%S')
         }
         print data
         return self.write(cr, uid, ids, data, context=context)
 
     def expense_accept(self, cr, uid, ids, context=None):
-        muser = lambda cr, uid, id, c={}: id
         data = {
             'state': 'done',
-            'user_accept': muser,
+            'user_accept': uid,
             'date_accept': time.strftime('%Y-%m-%d %H:%M:%S')
         }
         return self.write(cr, uid, ids,data,context=context)
 
     def expense_rejected(self, cr, uid, ids, context=None):
-        muser = lambda cr, uid, id, c={}: id
         data = {
             'state': 'rejected',
-            'user_rejected': muser,
+            'user_rejected': uid,
             'date_rejected': time.strftime('%Y-%m-%d %H:%M:%S')
         }
         return self.write(cr, uid, ids, data, context=context)
