@@ -6,7 +6,7 @@ import openerp.addons.decimal_precision as dp
 from openerp.osv import osv, fields
 
 
-def _get_last_month_end():
+def _get_last_month_end(obj, cr, uid, context=None):
     """
     获取上月最后一天
     """
