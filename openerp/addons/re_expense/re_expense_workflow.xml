@@ -20,7 +20,7 @@
             <field name="wkf_id" ref="wkf_re_expenses"/>
             <field name="name">confirm</field>
             <field name="kind">function</field>
-            <field name="action">expense_submit()</field>
+            <field name="action">expense_submit</field>
         </record>
 
         <record id="act_re_accepted" model="workflow.activity">

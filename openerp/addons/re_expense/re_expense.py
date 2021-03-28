@@ -59,7 +59,7 @@ class re_expense_expense(osv.osv):
             ('done', u'已完成'),
             ('rejected', u'已驳回'),
         ],
-            '状态', readonly=False
+            '状态', readonly=True
         ),
         'line_ids': fields.one2many('re.expense.line', 'expense_id', 'Expense Lines'),
 
