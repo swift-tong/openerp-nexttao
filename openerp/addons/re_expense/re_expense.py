@@ -81,7 +81,11 @@ class re_expense_expense(osv.osv):
             'user_submit': user,
             'date_submit': time.strftime('%Y-%m-%d %H:%M:%S')
         }
-        return self.write(cr, uid, ids, data, context=context)
+        return self.write(cr, uid, ids, {
+            'state': 'submitted',
+            'user_submit': user,
+            'date_submit': time.strftime('%Y-%m-%d %H:%M:%S')
+        }, context=context)
 
     def expense_accept(self, cr, uid, ids, context=None):
         user = lambda cr, uid, id, c={}: id
