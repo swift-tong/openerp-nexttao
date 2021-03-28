@@ -81,6 +81,10 @@
                                         <separator string="备注"/>
                                         <field name="note" placeholder="费用备注"/>
                                     </div>
+                                    <group class="oe_subtotal_footer oe_right">
+                                        <field name="总金额" widget="monetary"
+                                               class="oe_subtotal_footer_separator"/>
+                                    </group>
                                 </group>
                             </page>
                             <page string="审核（批）">
