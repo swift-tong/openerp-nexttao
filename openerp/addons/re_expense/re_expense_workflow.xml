@@ -20,7 +20,7 @@
             <field name="wkf_id" ref="wkf_re_expenses"/>
             <field name="name">confirm</field>
             <field name="kind">function</field>
-            <field name="action">expense_submit</field>
+            <field name="action">expense_submit()</field>
         </record>
 
         <record id="act_re_accepted" model="workflow.activity">
@@ -53,7 +53,7 @@
         <record id="re_t3" model="workflow.transition">
             <field name="act_from" ref="act_re_submit"/>
             <field name="act_to" ref="act_re_rejected"/>
-            <field name="signal">refuse</field>
+            <field name="signal">reject</field>
             <field name="group_id" ref="base.group_hr_user"/>
         </record>
 

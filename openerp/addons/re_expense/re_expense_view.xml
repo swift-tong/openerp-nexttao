@@ -28,11 +28,9 @@
                     <header>
                         <button name="submit" states="draft" string="提交" type="workflow"
                                 class="oe_highlight"/>
-                        <button name="cancel" states="draft" string="取消" type="workflow"
-                                class="oe_highlight"/>
                         <button name="accept" states="submitted" string="审核通过" type="workflow"
                                 groups="base.group_hr_user" class="oe_highlight"/>
-                        <button name="rejected" states="submitted" string="驳回" type="workflow"
+                        <button name="reject" states="submitted" string="驳回" type="workflow"
                                 groups="base.group_hr_user"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,submitted,done"
                                statusbar_colors='{"done":"blue","submitted":"red"}'/>
