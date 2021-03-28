@@ -94,8 +94,8 @@ class re_expense_expense(osv.osv):
     def expense_rejected(self, cr, uid, ids, context=None):
         data = {
             'state': 'draft',
-            'user_rejected': uid,
-            'date_rejected': time.strftime('%Y-%m-%d %H:%M:%S')
+            'user_reject': uid,
+            'date_reject': time.strftime('%Y-%m-%d %H:%M:%S')
         }
         return self.write(cr, uid, ids, data, context=context)
 
