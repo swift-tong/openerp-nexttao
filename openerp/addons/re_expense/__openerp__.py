@@ -34,6 +34,7 @@
         're_expense_view.xml',
         're_expense_workflow.xml',
         'security/security.xml',
+        'security/ir.model.access.csv',
     ],
     'installable': True,
     'auto_install': False,
