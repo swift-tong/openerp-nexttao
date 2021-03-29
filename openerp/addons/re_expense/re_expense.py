@@ -57,7 +57,7 @@ class re_expense_expense(osv.osv):
             ('draft', u'草稿'),
             ('submitted', u'已提交'),
             ('done', u'已完成'),
-            ('cancelled', u'已完成'),
+            ('cancelled', u'已取消'),
         ],
             '状态', readonly=True
         ),
