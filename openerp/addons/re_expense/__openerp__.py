@@ -31,7 +31,9 @@
     'website': 'http://www.openerp.com',
     'depends': ['base','account_voucher', 'account_accountant'],
     'data': [
-        're_expense_view.xml','re_expense_workflow.xml'
+        're_expense_view.xml',
+        're_expense_workflow.xml',
+        'security/security.xml',
     ],
     'installable': True,
     'auto_install': False,
