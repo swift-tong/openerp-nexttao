@@ -51,7 +51,7 @@
             <field name="group_id" ref="re_expense.expense_users"/>
         </record>
 
-        <record id="re_2" model="workflow.transition">
+        <record id="re_t2" model="workflow.transition">
             <field name="act_from" ref="act_re_draft"/>
             <field name="act_to" ref="act_re_cancelled"/>
             <field name="signal">cancel</field>
