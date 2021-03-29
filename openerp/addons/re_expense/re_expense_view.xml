@@ -28,11 +28,13 @@
                     <header>
                         <button name="submit" states="draft" string="提交" type="workflow"
                                 class="oe_highlight" groups="re_expense.expense_users"/>
+                        <button name="cancel" states="draft" string="取消" type="workflow"
+                                class="oe_highlight" groups="re_expense.expense_users"/>
                         <button name="accept" states="submitted" string="审核通过" type="workflow"
                                 groups="re_expense.expense_manager" class="oe_highlight"/>
                         <button name="reject" states="submitted" string="驳回" type="workflow"
-                                groups="re_expense.expense_manager" />
-                        <field name="state" widget="statusbar" statusbar_visible="draft,submitted,done"
+                                groups="re_expense.expense_manager"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,cancelled,submitted,done"
                                statusbar_colors='{"done":"blue","submitted":"red"}'/>
                     </header>
                     <sheet>
@@ -120,6 +122,7 @@
             <field name="view_id" ref="view_myexpenses_tree"/>
         </record>
 
-        <menuitem id="myexpense" name="费用报销" sequence="0" action="myexpense_all" groups="re_expense.expense_users,re_expense.expense_manager"/>
+        <menuitem id="myexpense" name="费用报销" sequence="0" action="myexpense_all"
+                  groups="re_expense.expense_users,re_expense.expense_manager"/>
     </data>
 </openerp>

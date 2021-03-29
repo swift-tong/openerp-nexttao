@@ -33,7 +33,7 @@ class re_expense_expense(osv.osv):
 
     _columns = {
         'user': fields.many2one('res.users', u'员工', required=True, readonly=True),
-        'date': fields.date(u'日期', select=True, readonly=True, states={'draft': [('readonly', False)]}),
+        'date': fields.date(u'日期', select=True, required=True, readonly=True, states={'draft': [('readonly', False)]}),
         'department': fields.many2one('hr.department', u'部门', readonly=True, states={'draft': [('readonly', False)]}),
         'instructions': fields.char(u'说明', readonly=True, states={'draft': [('readonly', False)]}),
         'total_amount': fields.function(_amount, readonly=True, string=u'总金额'),
@@ -57,6 +57,7 @@ class re_expense_expense(osv.osv):
             ('draft', u'草稿'),
             ('submitted', u'已提交'),
             ('done', u'已完成'),
+            ('cancelled', u'已完成'),
         ],
             '状态', readonly=True
         ),
@@ -70,6 +71,7 @@ class re_expense_expense(osv.osv):
         # 'date_check': fields.datetime.now(),
         # 'date_cancel': fields.datetime.now(),
         # 'date_commit': fields.datetime.now(),
+        'reception': False,
         'state': 'draft',
         'user': lambda cr, uid, id, c={}: id,
     }
@@ -125,15 +127,15 @@ class re_expense_line(osv.osv):
 
     _columns = {
         'expense_id': fields.many2one('re.expense.expense', 'Expense'),
-        'product_id': fields.many2one('product.product', u'产品'),
-        'product_amount': fields.integer(u'数量'),
+        'product_id': fields.many2one('product.product', u'产品', required=True),
+        'product_amount': fields.integer(u'数量', required=True),
         # 'expense_data': fields.date(u'费用日期', required=True, readonly=True, states={'draft': [('readonly', False)]}),
-        'expense_data': fields.date(u'费用日期'),
+        'expense_data': fields.date(u'费用日期', required=True),
         'expense_note': fields.char(u'费用备注', required=False),
         'order_no.': fields.char(u'单号', required=False),
         'auxiliary': fields.char(u'辅助核算项', required=False),
-        'amount': fields.float(string=u'金额', digits_compute=3),
-        'total_amount': fields.function(_amount, string=u'合计', digits_compute=dp.get_precision('Account')),
+        'amount': fields.float(string=u'金额', digits=(12,3), required=True),
+        'total_amount': fields.function(_amount, string=u'合计', digits=(12,3)),
     }
 
     _defaults = {
