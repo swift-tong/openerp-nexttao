@@ -60,7 +60,7 @@ class re_expense_expense(osv.osv):
         ],
             '状态', readonly=True
         ),
-        'line_ids': fields.one2many('re.expense.line', 'expense_id', 'Expense Lines'),
+        'line_ids': fields.one2many('re.expense.line', 'expense_id', 'Expense Lines', readonly=True, states={'draft': [('readonly', False)]}),
 
     }
     _defaults = {
