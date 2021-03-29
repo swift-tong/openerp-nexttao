@@ -18,7 +18,7 @@
 
         <record id="act_re_submit" model="workflow.activity">
             <field name="wkf_id" ref="wkf_re_expenses"/>
-            <field name="name">confirm</field>
+            <field name="name">submit</field>
             <field name="kind">function</field>
             <field name="action">expense_submit()</field>
         </record>
