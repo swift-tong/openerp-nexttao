@@ -132,7 +132,7 @@ class re_expense_line(osv.osv):
         'expense_note': fields.char(u'费用备注', required=False),
         'order_no.': fields.char(u'单号', required=False),
         'auxiliary': fields.char(u'辅助核算项', required=False),
-        'amount': fields.float(string=u'金额', digits_compute=dp.get_precision('Product Price')),
+        'amount': fields.float(string=u'金额', digits_compute=3),
         'total_amount': fields.function(_amount, string=u'合计', digits_compute=dp.get_precision('Account')),
     }
 
