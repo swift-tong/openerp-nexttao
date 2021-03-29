@@ -1,6 +1,6 @@
 <openerp>
     <data>
-        <record id="re_expense" model="ir.module.category">
+        <record id="re_expense_category" model="ir.module.category">
             <field name="name">员工组</field>
         </record>
         <record id="expense_users" model="res.groups">
