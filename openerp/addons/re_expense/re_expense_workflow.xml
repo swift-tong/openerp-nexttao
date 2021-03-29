@@ -53,7 +53,7 @@
 
         <record id="re_t3" model="workflow.transition">
             <field name="act_from" ref="act_re_submit"/>
-            <field name="act_to" ref="act_re_rejected"/>
+            <field name="act_to" ref="act_re_draft"/>
             <field name="signal">reject</field>
             <field name="group_id" ref="re_expense.expense_manager"/>
         </record>
