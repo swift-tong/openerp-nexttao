@@ -27,7 +27,7 @@ class re_expense_expense(osv.osv):
             res[expense.id] = total
         return res
 
-    def _check_role(self,cr,uid,ids):
+    def _check_role(self,cr,uid,ids, field_name, arg, context=None):
 
         user_obj = self.pool.get('res.users')
         group = user_obj.read(cr,uid,['sel_groups_29_30'])
