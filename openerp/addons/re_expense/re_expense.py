@@ -44,7 +44,7 @@ class re_expense_expense(osv.osv):
         'department': fields.many2one('hr.department', u'部门', readonly=True, states={'draft': [('readonly', False)]}),
         'instructions': fields.char(u'说明', readonly=True, states={'draft': [('readonly', False)]}),
         'total_amount': fields.function(_amount, readonly=True, string=u'总金额'),
-        'reception': fields.boolean(_check_role, readonly=True,string=u'已收单'),
+        'reception': fields.function(_check_role, readonly=True,string=u'已收单'),
         'note': fields.text(u'备注', readonly=True,
                             states={'draft': [('readonly', False)], 'submitted': [('readonly', False)]}),
 
