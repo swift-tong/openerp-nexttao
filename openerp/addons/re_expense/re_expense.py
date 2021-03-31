@@ -34,9 +34,9 @@ class re_expense_expense(osv.osv):
         for expense in self.browse(cr, uid, ids, context=context):
             if self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_users"):
                 self._readonly = True
-                res[expense.id] = pro_info.get('reception')
+                res[expense.id] = pro_info.get('reception',True)
             elif self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_manager"):
-                res[expense.id] = pro_info.get('reception')
+                res[expense.id] = pro_info.get('reception',True)
                 self._readonly = False
         return res
 
