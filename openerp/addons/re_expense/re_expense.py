@@ -18,7 +18,7 @@ def _get_last_month_end(obj, cr, uid, context=None):
 
 class re_expense_expense(osv.osv):
 
-    def __init__(self, cr, uid, name, context=None):
+    def __init__(self, cr, uid, context=None):
         if self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_users"):
             self._readonly = True
         elif self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_manager"):
