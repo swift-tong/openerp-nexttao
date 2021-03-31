@@ -18,12 +18,6 @@ def _get_last_month_end(obj, cr, uid, context=None):
 
 class re_expense_expense(osv.osv):
 
-    def __init__(self, cr, uid, context=None):
-        if self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_users"):
-            self._readonly = True
-        elif self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_manager"):
-            self._readonly = False
-
     def _amount(self, cr, uid, ids, field_name, arg, context=None):
         res = {}
         for expense in self.browse(cr, uid, ids, context=context):
@@ -34,12 +28,9 @@ class re_expense_expense(osv.osv):
         return res
 
     def _check_role(self,cr,uid,ids, field_name, arg, context=None):
-        pro_info = self.read(cr,uid,ids,["reception"])
-        print(pro_info)
-        reception = pro_info.get('reception',True)
-        print(reception)
         res = {}
         for expense in self.browse(cr, uid, ids, context=context):
+            reception = expense.get('reception', True)
             if self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_users"):
                 self._readonly = True
                 res[expense.id] = reception
@@ -59,8 +50,8 @@ class re_expense_expense(osv.osv):
         'department': fields.many2one('hr.department', u'部门', readonly=True, states={'draft': [('readonly', False)]}),
         'instructions': fields.char(u'说明', readonly=True, states={'draft': [('readonly', False)]}),
         'total_amount': fields.function(_amount, readonly=True, string=u'总金额', digits=(12,3)),
-        'reception': fields.boolean(u'已收单', readonly=_readonly, states={'submitted': [('readonly', False)]}),
-        # 'reception': fields.function(_check_role,string=u'已收单', readonly=_readonly),
+        # 'reception': fields.boolean(u'已收单', readonly=_readonly, states={'submitted': [('readonly', False)]}),
+        'reception': fields.function(_check_role,string=u'已收单', readonly=_readonly),
         'note': fields.text(u'备注', readonly=True,
                             states={'draft': [('readonly', False)], 'submitted': [('readonly', False)]}),
 
