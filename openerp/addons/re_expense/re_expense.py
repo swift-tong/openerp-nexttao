@@ -32,9 +32,9 @@ class re_expense_expense(osv.osv):
         for expense in self.browse(cr, uid, ids, context=context):
             if self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_users"):
                 # self._readonly = True
-                res[expense.id] = 1
+                res[expense.id] = True
             elif self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_manager"):
-                res[expense.id] = 0
+                res[expense.id] = False
                 # self._readonly = False
         return res
 
