@@ -46,8 +46,8 @@
                             </group>
                             <group>
                                 <field name="instructions"/>
-                                <field name="reception"/>
-                                <field name="check_role"/>
+                                <field name="reception" readonly="[('check_role','=',True)]"/>
+                                <field name="check_role" attrs="{'invisible': True}"/>
                             </group>
                         </group>
                         <notebook>
