@@ -30,15 +30,15 @@ class re_expense_expense(osv.osv):
     def _check_role(self,cr,uid,ids, field_name, arg, context=None):
         res = {}
         for expense in self.browse(cr, uid, ids, context=context):
-            print("-------------")
-            print(expense)
-            reception = expense.reception
+            # print("-------------")
+            # print(expense)
+            # reception = expense.reception
             if self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_users"):
-                self._readonly = True
-                res[expense.id] = reception
+                # self._readonly = True
+                res[expense.id] = True
             elif self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_manager"):
-                res[expense.id] = reception
-                self._readonly = False
+                res[expense.id] = False
+                # self._readonly = False
         return res
 
     _name = 're.expense.expense'
@@ -54,7 +54,7 @@ class re_expense_expense(osv.osv):
         'total_amount': fields.function(_amount, readonly=True, string=u'总金额', digits=(12,3)),
         'reception': fields.boolean(u'已收单', readonly=True, states={'submitted': [('readonly', False)]}),
         # 'reception': fields.boolean(u'已收单', readonly=False),
-        # 'reception': fields.function(_check_role,string=u'已收单', readonly=_readonly),
+        'check_role': fields.function(_check_role,string=u'已收单'),
         'note': fields.text(u'备注', readonly=True,
                             states={'draft': [('readonly', False)], 'submitted': [('readonly', False)]}),
 

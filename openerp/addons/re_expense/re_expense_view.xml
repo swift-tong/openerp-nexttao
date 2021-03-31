@@ -47,6 +47,7 @@
                             <group>
                                 <field name="instructions"/>
                                 <field name="reception"/>
+                                <field name="check_role"/>
                             </group>
                         </group>
                         <notebook>
