@@ -33,11 +33,11 @@ class re_expense_expense(osv.osv):
             # print("-------------")
             # print(expense)
             # reception = expense.reception
-            if self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_users"):
+            if self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_manager"):
                 # self._readonly = True
-                res[expense.id] = True
-            elif self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_manager"):
                 res[expense.id] = False
+            else:
+                res[expense.id] = True
                 # self._readonly = False
         return res
 
