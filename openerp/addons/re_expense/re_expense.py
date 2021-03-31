@@ -30,13 +30,16 @@ class re_expense_expense(osv.osv):
 
     def _check_role(self,cr,uid,ids, field_name, arg, context=None):
         pro_info = self.read(cr,uid,ids,["reception"])
+        print(pro_info)
+        reception = pro_info.get('reception',True)
+        print(reception)
         res = {}
         for expense in self.browse(cr, uid, ids, context=context):
             if self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_users"):
                 self._readonly = True
-                res[expense.id] = pro_info.get('reception',True)
+                res[expense.id] = reception
             elif self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_manager"):
-                res[expense.id] = pro_info.get('reception',True)
+                res[expense.id] = reception
                 self._readonly = False
         return res
 
