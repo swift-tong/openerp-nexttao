@@ -31,9 +31,9 @@ class re_expense_expense(osv.osv):
 
         if self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_users"):
             # self._readonly = True
-            return True
+            return "true"
         elif self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_manager"):
-            return False
+            return "false"
             # self._readonly = False
 
     _name = 're.expense.expense'
@@ -47,7 +47,7 @@ class re_expense_expense(osv.osv):
         'department': fields.many2one('hr.department', u'部门', readonly=True, states={'draft': [('readonly', False)]}),
         'instructions': fields.char(u'说明', readonly=True, states={'draft': [('readonly', False)]}),
         'total_amount': fields.function(_amount, readonly=True, string=u'总金额', digits=(12,3)),
-        # 'reception': fields.function(_check_role, readonly=True,string=u'已收单'),
+        # 'reception': fields.boolean(u'已收单', readonly=True, states={'submitted': [('readonly', False)]}),
         'reception': fields.function(_check_role,string=u'已收单'),
         'note': fields.text(u'备注', readonly=True,
                             states={'draft': [('readonly', False)], 'submitted': [('readonly', False)]}),
