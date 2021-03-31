@@ -29,9 +29,9 @@ class re_expense_expense(osv.osv):
 
     def _check_role(self,cr,uid,ids, field_name, arg, context=None):
 
-        user_obj = self.pool.get('res.users')
-        group = user_obj.read(cr,uid,ids,[])
-        print(group)
+        # user_obj = self.pool.get('res.users')
+        # group = user_obj.read(cr,uid,ids,[])
+        # print(group)
         return True
 
     _name = 're.expense.expense'
