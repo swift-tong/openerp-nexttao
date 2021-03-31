@@ -122,8 +122,8 @@
             <field name="view_id" ref="view_myexpenses_tree"/>
         </record>
 
-        <menuitem id="myexpense" name="员工自助" sequence="0"/>
-        <menuitem id="section_main_menu" parent="myexpense" name="费用申请" />
-        <menuitem id="lesson_menu" parent="section_main_menu" name="费用报销" action="myexpense_all" />
+        <menuitem id="myexpense" name="员工自助" sequence="0" groups="re_expense.expense_users,re_expense.expense_manager"/>
+        <menuitem id="section_main_menu" parent="myexpense" name="费用申请" groups="re_expense.expense_users,re_expense.expense_manager"/>
+        <menuitem id="lesson_menu" parent="section_main_menu" name="费用报销" action="myexpense_all" groups="re_expense.expense_users,re_expense.expense_manager"/>
     </data>
 </openerp>
