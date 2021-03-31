@@ -54,7 +54,7 @@ class re_expense_expense(osv.osv):
         'total_amount': fields.function(_amount, readonly=True, string=u'总金额', digits=(12,3)),
         'reception': fields.boolean(u'已收单', readonly=True, states={'submitted': [('readonly', False)]}),
         # 'reception': fields.boolean(u'已收单', readonly=False),
-        'check_role': fields.function(_check_role,string=u'已收单'),
+        'check_role': fields.function(_check_role,type='boolean',string=u'已收单'),
         'note': fields.text(u'备注', readonly=True,
                             states={'draft': [('readonly', False)], 'submitted': [('readonly', False)]}),
 
