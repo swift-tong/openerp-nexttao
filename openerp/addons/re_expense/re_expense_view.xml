@@ -46,7 +46,7 @@
                             </group>
                             <group>
                                 <field name="instructions"/>
-                                <field name="reception"/>
+                                <field name="reception" readonly="True" groups="re_expense.expense_users" />
                             </group>
                         </group>
                         <notebook>
