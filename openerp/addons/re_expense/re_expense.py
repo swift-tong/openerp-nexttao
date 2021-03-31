@@ -30,8 +30,10 @@ class re_expense_expense(osv.osv):
     def _check_role(self,cr,uid,ids, field_name, arg, context=None):
 
         user_obj = self.pool.get('res.users')
-        group = user_obj.read(cr,uid,ids,1)
-        print(group)
+        records = user_obj.read(cr,uid,ids,['login','id'])
+        for login ,id in records:
+            print(id)
+            print(login)
         return {}
 
     _name = 're.expense.expense'
