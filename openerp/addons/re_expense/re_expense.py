@@ -29,25 +29,24 @@ class re_expense_expense(osv.osv):
 
     def _check_role(self,cr,uid,ids, field_name, arg, context=None):
 
-        user_obj = self.pool.get('res.users')
-        records = user_obj.read(cr,uid,ids,['login','id'])
-        for login ,id in records:
-            print(id)
-            print(login)
-        return {}
+        if self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_users"):
+            self._readonly = True
+        elif self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_manager"):
+            self._readonly = False
 
     _name = 're.expense.expense'
     _description = "Expense"
     _order = "id desc"
+    _readonly = True
 
     _columns = {
         'user': fields.many2one('res.users', u'员工', required=True, readonly=True),
         'date': fields.date(u'日期', select=True, required=True, readonly=True, states={'draft': [('readonly', False)]}),
         'department': fields.many2one('hr.department', u'部门', readonly=True, states={'draft': [('readonly', False)]}),
         'instructions': fields.char(u'说明', readonly=True, states={'draft': [('readonly', False)]}),
-        'total_amount': fields.function(_amount, readonly=True, string=u'总金额'),
+        'total_amount': fields.function(_amount, readonly=True, string=u'总金额', digits=(12,3)),
         # 'reception': fields.function(_check_role, readonly=True,string=u'已收单'),
-        'reception': fields.boolean(string=u'已收单', readonly=True, states={'submitted': [('readonly', False)]}),
+        'reception': fields.function(_check_role,string=u'已收单', readonly=_readonly),
         'note': fields.text(u'备注', readonly=True,
                             states={'draft': [('readonly', False)], 'submitted': [('readonly', False)]}),
 
