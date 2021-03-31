@@ -28,13 +28,15 @@ class re_expense_expense(osv.osv):
         return res
 
     def _check_role(self,cr,uid,ids, field_name, arg, context=None):
-
-        if self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_users"):
-            # self._readonly = True
-            return "true"
-        elif self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_manager"):
-            return "false"
-            # self._readonly = False
+        res = {}
+        for expense in self.browse(cr, uid, ids, context=context):
+            if self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_users"):
+                # self._readonly = True
+                res[expense.id] = True
+            elif self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_manager"):
+                res[expense.id] = False
+                # self._readonly = False
+        return res
 
     _name = 're.expense.expense'
     _description = "Expense"
