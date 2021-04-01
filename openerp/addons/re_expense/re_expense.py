@@ -30,17 +30,10 @@ class re_expense_expense(osv.osv):
     def _check_role(self,cr,uid,ids, field_name, arg, context=None):
         res = {}
         for expense in self.browse(cr, uid, ids, context=context):
-            # print("-------------")
-            # print(expense)
-            # reception = expense.reception
             if self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_manager"):
-                print("------111---------")
-                # self._readonly = True
                 res[expense.id] = False
             else:
-                print("------222---------")
                 res[expense.id] = True
-                # self._readonly = False
         return res
 
     _name = 're.expense.expense'
@@ -96,12 +89,16 @@ class re_expense_expense(osv.osv):
     }
 
     def expense_submit(self, cr, uid, ids, context=None):
+        if self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_manager"):
+            check_role= False
+        else:
+            check_role = True
         data = {
             'state': 'submitted',
             'user_submit': uid,
+            'check_role' : check_role,
             'date_submit': time.strftime('%Y-%m-%d %H:%M:%S')
         }
-        print data
         return self.write(cr, uid, ids, data, context=context)
 
     def expense_accept(self, cr, uid, ids, context=None):
