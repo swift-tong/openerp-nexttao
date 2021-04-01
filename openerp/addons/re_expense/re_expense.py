@@ -34,9 +34,11 @@ class re_expense_expense(osv.osv):
             # print(expense)
             # reception = expense.reception
             if self.pool.get('res.users').has_group(cr, uid, "re_expense.expense_manager"):
+                print("------111---------")
                 # self._readonly = True
                 res[expense.id] = False
             else:
+                print("------222---------")
                 res[expense.id] = True
                 # self._readonly = False
         return res
